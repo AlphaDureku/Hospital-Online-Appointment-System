@@ -1,0 +1,103 @@
+use hospitaldatabase;
+
+--select queries
+select * from doctor
+--select doctor info and schedule
+select doctor_first_name, doctor_last_name, doctor_specialization, date_format(doctor_schedule_date, '%W') AS day, doctor_schedule_start_time AS start, doctor_schedule_end_time AS end
+from doctor inner join doctor_schedule_table on doctor_schedule_table.doctor_id = doctor.doctor_ID 
+select * from doctor_schedule_table
+select * from patient
+select * from appointment_details
+--show schedule without unavaiable
+select * from doctor_schedule_table where doctor_id = 1 AND doctor_schedule_status = 'AVAILABLE'
+--show appointment details from doctor's perspective
+select * from appointment_details where appointment_doctor_ID = 1
+select appointment_details.appointment_patient_ID, appointment_details.appointment_doctor_ID, doctor_schedule_table.doctor_schedule_date, doctor_schedule_table.doctor_schedule_start_time, appointment_details.appointment_status
+from appointment_details
+Left join doctor_schedule_table ON appointment_Details.doctor_schedule_id = doctor_schedule_table.doctor_schedule_id 
+
+--show appointment details from patient's perspective
+select * from appointment_details where appointment_patient_ID = (select patient_id from patient where patient_email = "templanzamark2002@gmail.com")
+
+--query for getting all appointment for patients
+select patient_first_name, patient_last_name, doctor_first_name, doctor_last_name, doctor_specialization, HMO, appointment_status from patient
+inner join appointment_details on patient.patient_id = appointment_details.appointment_patient_id
+inner join doctor on doctor.doctor_id = appointment_details.appointment_doctor_ID where patient.patient_id = "5eed4c4463530c"
+--insert queries
+--Doctor
+insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, HMO) values('Nolasco','Ang', 'Dermatologist', 'AMAPHIL');
+insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, HMO) values('Antonio','Tabang', 'Dentist', 'AON Insurance Reinsurance / Ayala AON');
+insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, HMO) values('Dominic Lemuel','Sevilla', 'Dermatologist', 'Asianlife and General Assurance');
+insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, HMO) values('Maria Jona','Godoy', 'Pediatrics', 'Blue cross');
+insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, HMO) values('Eligio','Batitis', 'Neurologist', 'Caritas Healthshield');
+insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, HMO) values('John Mark','Garcia', 'Pathology', 'Cooperative Health');
+insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, HMO) values('Raphael Benjamin','Arada', 'Colposcopy', 'Flexicare');
+insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, HMO) values('Mario Emmanuel','De Leon', 'Ultrasound', 'AON Insurance Reinsurance / Ayala AON');
+insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, HMO) values('Mary Ruth','Padua', 'Urology', 'Asianlife and General Assurance');
+insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, HMO) values('Alaric Emmanuel','Salonga', 'Pathology', 'Blue cross');
+
+
+--Schedule
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(1, "2022-12-05", "08:00:00", "09:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(1, "2022-12-06", "08:00:00", "09:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(1, "2022-12-07", "08:00:00", "09:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(1, "2022-12-08", "08:00:00", "09:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(2, "2022-12-09", "08:00:00", "09:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(2, "2022-12-10", "08:00:00", "09:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(2, "2022-12-11", "08:00:00", "09:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(2, "2022-12-12", "08:00:00", "09:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(3, "2022-12-05", "08:00:00", "09:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(3, "2022-12-06", "08:00:00", "09:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(3, "2022-12-07", "08:00:00", "09:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(3, "2022-12-08", "08:00:00", "09:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(4, "2022-12-09", "08:00:00", "09:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(4, "2022-12-10", "08:00:00", "09:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(4, "2022-12-11", "08:00:00", "09:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(4, "2022-12-12", "08:00:00", "09:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(5, "2022-12-05", "08:00:00", "09:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(5, "2022-12-06", "08:00:00", "09:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(5, "2022-12-07", "08:00:00", "09:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(5, "2022-12-08", "08:00:00", "09:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(6, "2022-12-09", "08:00:00", "09:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(6, "2022-12-10", "08:00:00", "09:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(6, "2022-12-11", "08:00:00", "09:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(6, "2022-12-12", "08:00:00", "09:00:00");
+--Patient
+insert into patient(patient_first_name, patient_last_name, patient_email, patient_contact_number, patient_address)
+values("Mark Angelo", "Templanza", "templanzamark2002@gmail.com", "09653876383", "111 Juan Luna St.")
+
+insert into patient(patient_first_name, patient_last_name, patient_email, patient_contact_number, patient_address)
+values("John", "Deep", "templanzamark2002@gmail.com", "09653876383", "111 Juan Luna St.")
+
+
+--Appointment
+--Insert appointment details
+insert into appointment_details(appointment_patient_ID, doctor_schedule_id, appointment_doctor_ID, appointment_creation_Date, patient_message)
+values((select patient_id from patient where patient_email = "templanzamark2002@gmail.com"),
+ 38, (select doctor_id from doctor_schedule_table where doctor_schedule_id =38), curdate(), "Appoinment made by Mark")
+
+insert into appointment_details(appointment_patient_ID, doctor_schedule_id, appointment_doctor_ID, appointment_creation_Date, patient_message)
+values((select patient_id from patient where patient_email = "templanzamark2003@gmail.com"), 27,
+(select doctor_id from doctor_schedule_table where doctor_schedule_id =27), curdate(), "Appoinment made by John Deep")
+--then set the appointment ID status to unavailable
+update doctor_schedule_table set doctor_schedule_status = "UNAVAILABLE" where doctor_schedule_id = 2
+update doctor_schedule_table set doctor_schedule_status = "UNAVAILABLE" where doctor_schedule_id = 6
+--then the doctor's secretary will decide if confirm or rejected, SEND AN EMAIL REGARDING THE STATUS
+update appointment_details set appointment_status = "CONFIRMED" where appointment_doctor_id = 1 AND appointment_patient_id = 1
+update appointment_details set appointment_status = "CONFIRMED" where appointment_doctor_id = 1 AND appointment_patient_id = 2
+update patient set patient_email = "templanzamark2003@gmail.com" where patient_id = 1
+
+--Alter table
+alter table doctor_schedule_table Alter doctor_schedule_status set DEFAULT 'AVAILABLE'
+alter table appointment_details Alter appointment_status set DEFAULT 'PENDING'
+alter table patient alter column patient_contact_number varchar(11)
+alter table patient add column patient_age int
+alter table doctor Auto_increment = 1
+alter table doctor rename column doctor_sub_Specialization to HMO
+
+
+delete from patient
+delete from appointment_details where appointment_id = 2
+delete from doctor
+delete from doctor_schedule_table
+

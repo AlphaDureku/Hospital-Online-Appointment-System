@@ -1,0 +1,58 @@
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-container {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(1rem, 25rem));
+    padding: 20px;
+    background: rgba( 255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37);
+    backdrop-filter: blur( 4px);
+    -webkit-backdrop-filter: blur( 4px);
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18);
+    text-align: center;
+    max-width: 1700px;
+    height: 50vh;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.doctor-flexbox-container {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #24B7E9;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 20px;
+}
+
+.doctor-flexbox-container:hover {
+    color: #3a7e3d;
+}
+
+.doctor-flexbox-Info {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+}
+
+.doctor-flexbox-Info .Lname {
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+}
+
+.doctor-flexbox-Info .specialization {
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.doctor-flexbox-Avail {
+    display: flex;
+    text-align: center;
+}
