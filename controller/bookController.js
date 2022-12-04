@@ -1,6 +1,6 @@
 const mail = require('nodemailer')
 const patientModel = require('../Models/Object_Models/Patient-info')
-
+const doctorModel = require('../Models/Database_Queries/doctorQuery');
 exports.renderClinicPage = async(req, res) => {
 
     res.render('Services/clinic', { layout: 'layouts/sub' })
@@ -36,8 +36,6 @@ exports.compareOTP = async(req, res) => {
 }
 
 exports.renderPatientForm = async(req, res) => {
-
-
     res.render('Services/patient-forms', { layout: 'layouts/sub' })
 }
 
@@ -49,10 +47,75 @@ exports.getPatientInfo = async(req, res) => {
     patientModel.contactNumber = req.body.contactNumber
     patientModel.dateOfBirth = req.body.dateOfBirth
     patientModel.gender = req.body.gender
-
     console.log(patientModel)
+}
+
+exports.renderDoctorList = async(req, res) => {
+    res.render('Services/choose-doctor', { layout: 'layouts/sub' })
+}
+
+
+exports.searchDoctor = async(req, res) => {
+    let searchOption = {
+        Fname: req.query.doctor_Fname,
+        Lname: req.query.doctor_Lname,
+        Specialization: req.query.specialization,
+        doctor_HMO: req.query.doctor_HMO
+    }
+    console.log(searchOption)
+    if (searchOption.Fname == "" && searchOption.Lname == "" && searchOption.Specialization == '' && searchOption.doctor_HMO == '') {
+        const result = await doctorModel.getDoctor()
+        const schedule = await doctorModel.getSchedule()
+        res.render('Services/choose-doctor', { queriedDoctors: result[0], queriedSchedule: schedule[0], layout: 'layouts/sub' })
+    } else if ((searchOption.Fname === "" && searchOption.Lname === "") && (searchOption.Specialization != undefined && searchOption.doctor_HMO != undefined)) {
+        const result = await doctorModel.getDoctor_Using_Spec_doctor_HMO(searchOption.Specialization, searchOption.doctor_HMO)
+        const schedule = await doctorModel.getSchedule_Using_Spec_doctor_HMO(searchOption.Specialization, searchOption.doctor_HMO)
+        console.log("get by spec and sub_spec only")
+        res.render('Services/choose-doctor', { queriedDoctors: result[0], queriedSchedule: schedule[0], layout: 'layouts/sub' })
+    } else if ((searchOption.Fname != undefined || searchOption.Lname != undefined) && (searchOption.Specialization != "" || searchOption.doctor_HMO != "")) {
+        const result = await doctorModel.getDoctor_Using_All(searchOption.Fname, searchOption.Lname, searchOption.Specialization, searchOption.doctor_HMO);
+        const schedule = await doctorModel.getSchedule_Using_All(searchOption.Fname, searchOption.Lname, searchOption.Specialization, searchOption.doctor_HMO)
+        console.log(result[0])
+        console.log("get by Name, spec and sub_spec")
+        res.render('Services/choose-doctor', { queriedDoctors: result[0], queriedSchedule: schedule[0], layout: 'layouts/sub' })
+    } else if (searchOption.Fname != "" && searchOption.Lname != "") {
+        const result = await doctorModel.getDoctor_Using_Fname_Lname(searchOption.Fname, searchOption.Lname)
+        const schedule = await doctorModel.getSchedule_Using_Fname_Lname(searchOption.Fname, searchOption.Lname)
+        console.log("get by Fname Lname")
+        res.render('Services/choose-doctor', { queriedDoctors: result[0], queriedSchedule: schedule[0], layout: 'layouts/sub' })
+    } else if (searchOption.Lname != "") {
+        const result = await doctorModel.getDoctor_Using_Lname(searchOption.Lname)
+        const schedule = await doctorModel.getSchedule_Using_Lname(searchOption.Lname)
+        console.log(result[0])
+        console.log("get by LName")
+        console.log(searchOption.Lname)
+        console.log(schedule[0])
+        res.render('Services/choose-doctor', { queriedDoctors: result[0], queriedSchedule: schedule[0], layout: 'layouts/sub' })
+    } else if (searchOption.Fname != "") {
+        const result = await doctorModel.getDoctor_Using_Fname(searchOption.Fname)
+        const schedule = await doctorModel.getSchedule_Using_Fname(searchOption.Fname)
+        console.log(result[0])
+        console.log("get by FName")
+        console.log(searchOption.Fname)
+        res.render('Services/choose-doctor', { queriedDoctors: result[0], queriedSchedule: schedule[0], layout: 'layouts/sub' })
+    } else {
+        console.log("Undefined")
+        res.render('Services/choose-doctor')
+    }
+
 
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

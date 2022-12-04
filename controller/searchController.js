@@ -1,4 +1,3 @@
-const { end } = require('../Models/database');
 const doctorModel = require('../Models/Database_Queries/doctorQuery');
 
 exports.renderHomePage = async(req, res) => {

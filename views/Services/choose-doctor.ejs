@@ -1,0 +1,64 @@
+<form action="/book-appointment/search-doctor">
+    <section id=searchdoctor>
+        <div class="row p-4 mb-4 g-2  d-flex justify-content-center ">
+            <div class="tagtitle ">Search Doctor </div>
+
+            <div class=" col-auto pt-3">
+                <div class="form-outline l-name ">
+                    <input type="search" id="form1" class="form-control doctor " placeholder="Doctor's Last Name" aria-label="Search" name="doctor_Lname" />
+                </div>
+            </div>
+            <div class=" col-auto pt-3  ">
+                <div class=" form-outline f-name ">
+                    <input type="search" id="form1" class="form-control doctor" placeholder="Doctor's First Name" aria-label="Search" name="doctor_Fname" />
+                </div>
+            </div>
+            <div class=" col-auto pt-3 ">
+                <select class="form-select" aria-label="select1" name="specialization">
+                <option value="">Select Specialization</option>
+                <option value="Dentist">Dentist</option>
+                <option value="Cardiologist">Cardiologist</option>
+                <option value="Colposcopy">Colposcopy</option>
+                <option value="Dermatologist">Dermatologist</option>
+                <option value="Endocrinology">Endocrinology</option>
+                <option value="Neurologist">Neurologist</option>
+                <option value="Pediatrics">Pediatrics</option>
+                <option value="Pathology">Pathology</option>
+                <option value="Ultrasound">Ultrasound</option>
+                <option value="Colposcopy">Urology</option>
+            </select>
+            </div>
+            <div class=" col-auto   pt-3 ">
+                <select class="form-select" aria-label="select2" name="doctor_HMO">
+                <option value="">Select doctor_HMO</option>
+                <option value="AMAPHIL" >AMAPHIL</option>
+                <option value="AON Insurance Reinsurance / Ayala AON">AON Insurance Reinsurance / Ayala AON</option>
+                <option value="Asianlife and General Assurance">Asianlife and General Assurance</option>
+                <option value="Blue cross">Blue cross</option>
+                <option value="Caritas Healthshield">Caritas Healthshield</option>
+                <option value="Cooperative Health">Cooperative Health</option>
+                <option value="Flexicare">Flexicare</option>
+            </select>
+            </div>
+
+            <div class="  col-auto pt-3">
+                <button type="submit" class="btn btn-success btn " style="width: 110px;">Search</button>
+                <button type="button" class="btn btn-success btn me-3 " style="width: 110px; background-color: #FF0000; border-color: #FF0000;">Clear</button>
+
+            </div>
+
+        </div>
+</form>
+<%-include('../partials/doctor.ejs')%>
+
+
+
+
+
+
+
+
+
+
+
+    </section>

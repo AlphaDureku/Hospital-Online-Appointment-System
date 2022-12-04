@@ -71,6 +71,7 @@ const sendEmail = (email, otp) => {
 
 
 exports.testInsertPatient = async(req, res) => {
-    patientModel.insertPatient("James", "Kawabunga", "templanzamark2003@gmail.com", "9653876383", "111 Juan Luna St.", "20")
+    patientModel.insertPatient("John", "Deep", "templanzamark2002@gmail.com", "9653876383", "111 Juan Luna St.", "20", "Male")
+    patientModel.insertPatient("Mark", "SuckerVerg", "templanzamark2003@gmail.com", "9653876383", "111 Juan Luna St.", "25", "Male")
     res.send("success")
 }

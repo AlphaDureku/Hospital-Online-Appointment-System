@@ -19,9 +19,10 @@ exports.fetchPatient_Appointments_Using_Email = async function(patient_Email) {
 
 //Get Patient Appointment List with their INFO by passing their patient ID
 exports.fetchPatient_Appointments_Using_ID = async function(patient_id) {
-    return pool.query(`select patient_first_name, patient_last_name, doctor_first_name, doctor_last_name, doctor_specialization, doctor_HMO, appointment_status from patient
+    return pool.query(`select patient_first_name, patient_Email, patient_last_name, doctor_first_name, doctor_last_name, gender, doctor_specialization, date_format(doctor_schedule_date,'%M %D, %Y') AS date, doctor_schedule_start_time, doctor_HMO, appointment_status from patient
                        inner join appointment_details on patient.patient_id = appointment_details.appointment_patient_id
-                       inner join doctor on doctor.doctor_id = appointment_details.appointment_doctor_ID where patient.patient_id = ?`, [patient_id])
+                       inner join doctor on doctor.doctor_id = appointment_details.appointment_doctor_ID left join doctor_schedule_table on appointment_details.doctor_schedule_id = doctor_schedule_table.doctor_schedule_id
+                       where patient.patient_id = ?`, [patient_id])
 }
 
 

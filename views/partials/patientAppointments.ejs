@@ -1,0 +1,48 @@
+<% if(locals.queriedAppointments != null){%>
+
+    <%queriedAppointments.forEach(data=>{%>
+        <div class="row p-3">
+            <div class=" card pt-2 pb-2" style=" width: 600px;
+         height: 380px;">
+                <div class="card-body container-fluid">
+                    <div class="card-title" style="font-size:25px ;font-weight: 600;">
+                        <%=data.patient_first_name%>
+                            <%=data.patient_last_name%>
+                    </div>
+                    <p class="card-subtitle ">
+                        <%=data.gender%>
+                    </p>
+                    <p class="card-subtitle">
+                        <%=data.age%>
+                    </p>
+                    <label for="card-text">Track via Email address: </label>
+                    <label for="card-text" style="font-weight: 600;"><%=data.patient_Email%> </label>
+                    <div class="row pt-4">
+                        <div class="col pt-5">
+                            <p class="card-subtitle" style="font-weight: 600">
+                                <%=data.doctor_first_name%>
+                                    <%=data.doctor_last_name%>
+                            </p>
+                            <p class="card-subtitle pt-2">
+                                <%=data.doctor_specialization%>
+                            </p>
+                        </div>
+                        <div class="col pt-5">
+                            <p class="card-subtitle" style="font-weight: 600">Appointment Date</p>
+                            <p class="card-subtitle pt-2" style="color: #388440; font-weight: bold;">
+                                <%=data.date%> -
+                                    <%=data.doctor_schedule_start_time%>
+                            </p>
+                        </div>
+                        <div class="row pt-5 justify-content-center m-auto">
+                            <button type="button " class="btn btn-success btn me-3 " style="width: 120px; background-color: #FF0000; border-color: #FF0000; border-radius: 10px;">Cancel</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <%})%>
+
+            <%}%>

@@ -241,8 +241,8 @@
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18);
     text-align: center;
-    max-width: 1700px;
-    height: 63vh;
+    width: 1700px;
+    height: 62vh;
     overflow: hidden;
     overflow-y: auto;
     color: rgba(75, 80, 109, 1);
@@ -300,4 +300,15 @@
 .sched {
     font-weight: 600;
     font-size: 0.7rem;
+}
+
+.appointment-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#test {
+    margin-left: -24.5%;
 }
