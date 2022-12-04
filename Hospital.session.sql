@@ -26,7 +26,7 @@ inner join doctor on doctor.doctor_id = appointment_details.appointment_doctor_I
 left join doctor_schedule_table on appointment_details.doctor_schedule_id = doctor_schedule_table.doctor_schedule_id
 where patient.patient_id = "5eed4c4463530c"
 --insert queries
---Doctor
+-- insert Doctor
 insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, doctor_HMO) values('Nolasco','Ang', 'Dermatologist', 'AMAPHIL');
 insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, doctor_HMO) values('Antonio','Tabang', 'Dentist', 'AON Insurance Reinsurance / Ayala AON');
 insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, doctor_HMO) values('Dominic Lemuel','Sevilla', 'Dermatologist', 'Asianlife and General Assurance');
@@ -39,7 +39,7 @@ insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, d
 insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, doctor_HMO) values('Alaric Emmanuel','Salonga', 'Pathology', 'Blue cross');
 
 
---Schedule
+--insert Schedule
 insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(1, "2022-12-05", "08:00:00", "09:00:00");
 insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(1, "2022-12-06", "08:00:00", "09:00:00");
 insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(1, "2022-12-07", "08:00:00", "09:00:00");
@@ -77,12 +77,9 @@ insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedu
 insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(10, "2022-12-14", "05:00:00", "06:00:00");
 insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(10, "2022-12-15", "10:00:00", "11:00:00");
 insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(10, "2022-12-16", "02:00:00", "03:00:00");
---Patient
-insert into patient(patient_first_name, patient_last_name, patient_email, patient_contact_number, patient_address, patient_age, patient_gender)
-values("Mark Angelo", "Templanza", "templanzamark2002@gmail.com", "09653876383", "111 Juan Luna St.", "20", "Male")
 
-insert into patient(patient_first_name, patient_last_name, patient_email, patient_contact_number, patient_address)
-values("John", "Deep", "templanzamark2002@gmail.com", "09653876383", "111 Juan Luna St.", "20", "Male")
+--insert Patient
+NASA TRACK APPOINTMENTCONTROLLER
 
 
 --Appointment
