@@ -20,21 +20,21 @@ Left join doctor_schedule_table ON appointment_Details.doctor_schedule_id = doct
 select * from appointment_details where appointment_patient_ID = (select patient_id from patient where patient_email = "templanzamark2002@gmail.com")
 
 --query for getting all appointment for patients
-select patient_first_name, patient_last_name, doctor_first_name, doctor_last_name, doctor_specialization, HMO, appointment_status from patient
+select patient_first_name, patient_last_name, doctor_first_name, doctor_last_name, doctor_specialization, doctor_HMO, appointment_status from patient
 inner join appointment_details on patient.patient_id = appointment_details.appointment_patient_id
 inner join doctor on doctor.doctor_id = appointment_details.appointment_doctor_ID where patient.patient_id = "5eed4c4463530c"
 --insert queries
 --Doctor
-insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, HMO) values('Nolasco','Ang', 'Dermatologist', 'AMAPHIL');
-insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, HMO) values('Antonio','Tabang', 'Dentist', 'AON Insurance Reinsurance / Ayala AON');
-insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, HMO) values('Dominic Lemuel','Sevilla', 'Dermatologist', 'Asianlife and General Assurance');
-insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, HMO) values('Maria Jona','Godoy', 'Pediatrics', 'Blue cross');
-insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, HMO) values('Eligio','Batitis', 'Neurologist', 'Caritas Healthshield');
-insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, HMO) values('John Mark','Garcia', 'Pathology', 'Cooperative Health');
-insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, HMO) values('Raphael Benjamin','Arada', 'Colposcopy', 'Flexicare');
-insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, HMO) values('Mario Emmanuel','De Leon', 'Ultrasound', 'AON Insurance Reinsurance / Ayala AON');
-insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, HMO) values('Mary Ruth','Padua', 'Urology', 'Asianlife and General Assurance');
-insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, HMO) values('Alaric Emmanuel','Salonga', 'Pathology', 'Blue cross');
+insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, doctor_HMO) values('Nolasco','Ang', 'Dermatologist', 'AMAPHIL');
+insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, doctor_HMO) values('Antonio','Tabang', 'Dentist', 'AON Insurance Reinsurance / Ayala AON');
+insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, doctor_HMO) values('Dominic Lemuel','Sevilla', 'Dermatologist', 'Asianlife and General Assurance');
+insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, doctor_HMO) values('Maria Jona','Godoy', 'Pediatrics', 'Blue cross');
+insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, doctor_HMO) values('Eligio','Batitis', 'Neurologist', 'Caritas Healthshield');
+insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, doctor_HMO) values('John Mark','Garcia', 'Pathology', 'Cooperative Health');
+insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, doctor_HMO) values('Raphael Benjamin','Arada', 'Colposcopy', 'Flexicare');
+insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, doctor_HMO) values('Mario Emmanuel','De Leon', 'Ultrasound', 'AON Insurance Reinsurance / Ayala AON');
+insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, doctor_HMO) values('Mary Ruth','Padua', 'Urology', 'Asianlife and General Assurance');
+insert into doctor(doctor_first_name, doctor_last_name, doctor_specialization, doctor_HMO) values('Alaric Emmanuel','Salonga', 'Pathology', 'Blue cross');
 
 
 --Schedule
@@ -62,6 +62,20 @@ insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedu
 insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(6, "2022-12-10", "08:00:00", "09:00:00");
 insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(6, "2022-12-11", "08:00:00", "09:00:00");
 insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(6, "2022-12-12", "08:00:00", "09:00:00");
+
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(7, "2022-12-11", "08:00:00", "09:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(7, "2022-12-12", "09:00:00", "10:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(7, "2022-12-13", "12:00:00", "01:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(8, "2022-12-11", "01:00:00", "02:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(8, "2022-12-12", "02:00:00", "03:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(8, "2022-12-13", "08:00:00", "09:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(9, "2022-12-15", "10:00:00", "11:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(9, "2022-12-16", "01:00:00", "02:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(9, "2022-12-17", "08:00:00", "09:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(10, "2022-12-13", "03:00:00", "04:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(10, "2022-12-14", "05:00:00", "06:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(10, "2022-12-15", "10:00:00", "11:00:00");
+insert into doctor_schedule_table(doctor_id, doctor_schedule_date, doctor_schedule_start_time, doctor_schedule_end_time) values(10, "2022-12-16", "02:00:00", "03:00:00");
 --Patient
 insert into patient(patient_first_name, patient_last_name, patient_email, patient_contact_number, patient_address)
 values("Mark Angelo", "Templanza", "templanzamark2002@gmail.com", "09653876383", "111 Juan Luna St.")
@@ -93,11 +107,12 @@ alter table appointment_details Alter appointment_status set DEFAULT 'PENDING'
 alter table patient alter column patient_contact_number varchar(11)
 alter table patient add column patient_age int
 alter table doctor Auto_increment = 1
-alter table doctor rename column doctor_sub_Specialization to HMO
+alter table doctor rename column doctor_HMO to doctor_doctor_HMO
 
 
 delete from patient
 delete from appointment_details where appointment_id = 2
 delete from doctor
 delete from doctor_schedule_table
+delete from doctor_schedule_table where doctor_id between 6 AND 11
 

@@ -54,7 +54,7 @@
                 <div class="carousel-item">
 
                     <p>
-                        Sort out you payment online, over the counter or via accredited HMO/insurance.
+                        Sort out you payment online, over the counter or via accredited doctor_HMO/insurance.
                     </p>
 
                 </div>
@@ -85,7 +85,7 @@
                 <p class="sertext text-center  ">Outpatient Services</p>
                 <p class="sersub">Offers a wide range of services from diagnosis, theraphy, treatments, laboratory tests, ambulatory and home care.</p>
 
-                <button type="button" class="btn btn-success  mt-2">Set Appointment</button>
+                <a href="/book-appointment/outpatient"><button type="button" class="btn btn-success  mt-2">Set Appointment</button></a>
 
             </div>
 
@@ -94,8 +94,7 @@
                 <p class="sertext text-center ">Private Clinics</p>
                 <p class="sersub">Private clinics and doctors and specialists providing medical care.</p>
 
-
-                <button type="button" class="btn btn-success mt-2 ">Set Appointment</button>
+                <a href="/book-appointment/clinic"><button type="button" class="btn btn-success mt-2 ">Set Appointment</button></a>
 
 
             </div>
@@ -135,8 +134,8 @@
                                         </select>
             </div>
             <div class="  col-auto pt-3">
-                <select class="form-select" aria-label="select2" name="HMO">
-                                            <option value="">Select HMO</option>
+                <select class="form-select" aria-label="select2" name="doctor_HMO">
+                                            <option value="">Select doctor_HMO</option>
                                             <option value="AMAPHIL" >AMAPHIL</option>
                                             <option value="AON Insurance Reinsurance / Ayala AON">AON Insurance Reinsurance / Ayala AON</option>
                                             <option value="Asianlife and General Assurance">Asianlife and General Assurance</option>
@@ -189,14 +188,14 @@
                                             <p> Please Enter (6) digit code to complete your verification. </p>
 
                                             <div class=" otp-form  container-fluid text-center">
-                                                <input type="number" id="otpInput" otp class="form-control" />
+                                                <input type="number" id="otpInput" class="form-control" />
                                             </div>
                                             <label class="label pt-3">OTP is valid for 3 minutes</label>
                                         </div>
                                         <div class="modal-footer">
 
                                             <button type="button" class="btn btn-success" style="border-radius:10px; background-color:#FF0000; border-color: #FF0000 ;width: 110px" ; data-bs-dismiss="modal">Cancel</button>
-                                            <button type="button" class="btn btn-success" style="border-radius:10px ;width: 115px; height: 41px" onclick="compareOTP(document.getElementById('otpInput').value, document.getElementById('exampleInputEmail').value)">Verify</button>
+                                            <button type="button" class="btn btn-success" style="border-radius:10px ;width: 115px; height: 41px" onclick="trackingCompareOTP(document.getElementById('otpInput').value, document.getElementById('exampleInputEmail').value)">Verify</button>
                                         </div>
                                     </div>
                                 </div>

@@ -26,7 +26,8 @@ $("#modal-btn").click(function() {
 
 });
 
-const compareOTP = (inputOTP, inputEmail) => {
+
+const trackingCompareOTP = (inputOTP, inputEmail) => {
     $.post("http://localhost:4000/verify", {
         inputOTP: inputOTP,
         inputEmail: inputEmail
@@ -34,6 +35,41 @@ const compareOTP = (inputOTP, inputEmail) => {
         console.log(res.isVerified)
         if (res.isVerified) {
             $(location).attr('href', `http://localhost:4000/Manage-Appointments/${res.patient_id}`);
+        }
+    })
+}
+
+
+$("#setAppointmentBtn").click(function() {
+    if ($("#exampleInputEmail").val() != "") {
+        if ($('#checkbox').is(":checked")) {
+            $.post("http://localhost:4000/book-appointment/send-OTP", {
+                credentials: 'same-origin',
+                patient_Email: $('#exampleInputEmail').val()
+            }, function(res, status) {
+                console.log(res)
+            })
+            $('#otpmodal').modal("show")
+        } else {
+            $('#termsAndServiceError').modal("show")
+        }
+    } else {
+
+        $('#invalidEmailError').modal("show")
+    }
+
+
+})
+
+
+const CompareOTPsetAppointment = (inputOTP) => {
+    $.post("http://localhost:4000/book-appointment/verify-otp", {
+        credentials: 'same-origin',
+        inputOTP: inputOTP,
+    }, function(res, status) {
+        console.log(res.isVerified)
+        if (res.isVerified) {
+            $(location).attr('href', `http://localhost:4000/book-appointment/patient-forms`);
         }
     })
 }

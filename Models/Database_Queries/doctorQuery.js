@@ -2,12 +2,12 @@ const database = require('../database');
 const pool = require('../database');
 
 exports.getOneDoctor = async function(id) {
-    return pool.query(`select doctor.doctor_ID, doctor_first_name, doctor_last_name, doctor_specialization, HMO, date_format(doctor_schedule_date, '%W') AS day, doctor_schedule_start_time AS start, doctor_schedule_end_time AS end
+    return pool.query(`select doctor.doctor_ID, doctor_first_name, doctor_last_name, doctor_specialization, doctor_HMO, date_format(doctor_schedule_date, '%W') AS day, doctor_schedule_start_time AS start, doctor_schedule_end_time AS end
                        from doctor inner join doctor_schedule_table on doctor_schedule_table.doctor_id = doctor.doctor_ID where doctor.doctor_ID = ?`, [id])
 }
 
 exports.getDoctor = async function() {
-    return pool.query(`select doctor_ID, doctor_first_name, doctor_last_name, doctor_specialization, HMO from doctor`)
+    return pool.query(`select doctor_ID, doctor_first_name, doctor_last_name, doctor_specialization, doctor_HMO from doctor`)
 }
 
 exports.getSchedule = async function() {
@@ -16,28 +16,28 @@ exports.getSchedule = async function() {
 }
 
 //Get Doctor's List filtered by SPECIALIZATION and SUB SPECIALIZATION
-exports.getDoctor_Using_Spec_HMO = async function(spec, HMO) {
-    return pool.query(`select doctor_ID, doctor_first_name, doctor_last_name, doctor_specialization, HMO  from doctor where doctor_specialization = ? OR HMO = ?`, [spec, HMO])
+exports.getDoctor_Using_Spec_doctor_HMO = async function(spec, doctor_HMO) {
+    return pool.query(`select doctor_ID, doctor_first_name, doctor_last_name, doctor_specialization, doctor_HMO  from doctor where doctor_specialization = ? OR doctor_HMO = ?`, [spec, doctor_HMO])
 }
 
-exports.getSchedule_Using_Spec_HMO = async function(spec, HMO) {
+exports.getSchedule_Using_Spec_doctor_HMO = async function(spec, doctor_HMO) {
         return pool.query(`select doctor.doctor_ID, date_format(doctor_schedule_date, '%W') AS day, doctor_schedule_start_time AS start
                           from doctor inner join doctor_schedule_table on doctor_schedule_table.doctor_id = doctor.doctor_ID
-                          where doctor.doctor_specialization = ? OR doctor.HMO = ?`, [spec, HMO])
+                          where doctor.doctor_specialization = ? OR doctor.doctor_HMO = ?`, [spec, doctor_HMO])
     }
     //Get Doctor's List using ALL search queries
-exports.getDoctor_Using_All = async function(doctor_Fname, doctor_Lname, spec, HMO) {
-    return pool.query(`select doctor_ID, doctor_first_name, doctor_last_name, doctor_specialization, HMO from doctor
-                      where  doctor_specialization = ? OR  HMO = ? having  doctor_first_name LIKE ? OR doctor_last_name LIKE ?`, [spec, HMO, `%${doctor_Fname}%`, `%${doctor_Lname}%`])
+exports.getDoctor_Using_All = async function(doctor_Fname, doctor_Lname, spec, doctor_HMO) {
+    return pool.query(`select doctor_ID, doctor_first_name, doctor_last_name, doctor_specialization, doctor_HMO from doctor
+                      where  doctor_specialization = ? OR  doctor_HMO = ? having  doctor_first_name LIKE ? OR doctor_last_name LIKE ?`, [spec, doctor_HMO, `%${doctor_Fname}%`, `%${doctor_Lname}%`])
 }
-exports.getSchedule_Using_All = async function(doctor_Fname, doctor_Lname, spec, HMO) {
+exports.getSchedule_Using_All = async function(doctor_Fname, doctor_Lname, spec, doctor_HMO) {
     return pool.query(`select doctor.doctor_ID, date_format(doctor_schedule_date, '%W') AS day, doctor_schedule_start_time AS start
                        from doctor inner join doctor_schedule_table on doctor_schedule_table.doctor_id = doctor.doctor_ID
-                       where doctor_specialization = ? OR  HMO = ? having  doctor_first_name LIKE ? OR doctor_last_name LIKE ?`, [spec, HMO, `%${doctor_Fname}%`, `%${doctor_Lname}%`])
+                       where doctor_specialization = ? OR  doctor_HMO = ? having  doctor_first_name LIKE ? OR doctor_last_name LIKE ?`, [spec, doctor_HMO, `%${doctor_Fname}%`, `%${doctor_Lname}%`])
 }
 
 exports.getDoctor_Using_Fname_Lname = async function(doctor_Fname, doctor_Lname) {
-    return pool.query(`select doctor_ID, doctor_first_name, doctor_last_name, doctor_specialization, HMO  from doctor where doctor_first_name LIKE ? AND doctor_last_name LIKE ?`, [`%${doctor_Fname}%`, `%${doctor_Lname}%`])
+    return pool.query(`select doctor_ID, doctor_first_name, doctor_last_name, doctor_specialization, doctor_HMO  from doctor where doctor_first_name LIKE ? AND doctor_last_name LIKE ?`, [`%${doctor_Fname}%`, `%${doctor_Lname}%`])
 }
 exports.getSchedule_Using_Fname_Lname = async function(doctor_Fname, doctor_Lname) {
     return pool.query(`select doctor.doctor_ID, date_format(doctor_schedule_date, '%W') AS day, doctor_schedule_start_time AS start
@@ -46,7 +46,7 @@ from doctor inner join doctor_schedule_table on doctor_schedule_table.doctor_id 
 
 //Get Doctor's List filtered by their FIRST name
 exports.getDoctor_Using_Fname = async function(doctor_Fname) {
-    return pool.query(`select doctor_ID, doctor_first_name, doctor_last_name, doctor_specialization, HMO  from doctor having  doctor_first_name LIKE ?`, [`%${doctor_Fname}%`])
+    return pool.query(`select doctor_ID, doctor_first_name, doctor_last_name, doctor_specialization, doctor_HMO  from doctor having  doctor_first_name LIKE ?`, [`%${doctor_Fname}%`])
 }
 
 exports.getSchedule_Using_Fname = async function(doctor_Fname) {
@@ -56,7 +56,7 @@ from doctor inner join doctor_schedule_table on doctor_schedule_table.doctor_id 
 
 //Get Doctor's List filtered by their LAST name
 exports.getDoctor_Using_Lname = async function(doctor_Lname) {
-    return pool.query(`select doctor_ID, doctor_first_name, doctor_last_name, doctor_specialization, HMO  from doctor having doctor_last_name LIKE ?`, [`%${doctor_Lname}%`])
+    return pool.query(`select doctor_ID, doctor_first_name, doctor_last_name, doctor_specialization, doctor_HMO  from doctor having doctor_last_name LIKE ?`, [`%${doctor_Lname}%`])
 }
 exports.getSchedule_Using_Lname = async function(doctor_Lname) {
     return pool.query(`select doctor.doctor_ID, date_format(doctor_schedule_date, '%W') AS day, doctor_schedule_start_time AS start

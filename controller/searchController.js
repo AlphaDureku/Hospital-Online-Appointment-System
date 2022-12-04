@@ -10,21 +10,21 @@ exports.renderDoctorsDirectory = async(req, res) => {
         Fname: req.query.doctor_Fname,
         Lname: req.query.doctor_Lname,
         Specialization: req.query.specialization,
-        HMO: req.query.HMO
+        doctor_HMO: req.query.doctor_HMO
     }
     console.log(searchOption.Fname)
-    if (searchOption.Fname == "" && searchOption.Lname == "" && searchOption.Specialization == '' && searchOption.HMO == '') {
+    if (searchOption.Fname == "" && searchOption.Lname == "" && searchOption.Specialization == '' && searchOption.doctor_HMO == '') {
         const result = await doctorModel.getDoctor()
         const schedule = await doctorModel.getSchedule()
         res.render('home/index', { queriedDoctors: result[0], queriedSchedule: schedule[0] })
-    } else if ((searchOption.Fname === "" && searchOption.Lname === "") && (searchOption.Specialization != undefined && searchOption.HMO != undefined)) {
-        const result = await doctorModel.getDoctor_Using_Spec_HMO(searchOption.Specialization, searchOption.HMO)
-        const schedule = await doctorModel.getSchedule_Using_Spec_HMO(searchOption.Specialization, searchOption.HMO)
+    } else if ((searchOption.Fname === "" && searchOption.Lname === "") && (searchOption.Specialization != undefined && searchOption.doctor_HMO != undefined)) {
+        const result = await doctorModel.getDoctor_Using_Spec_doctor_HMO(searchOption.Specialization, searchOption.doctor_HMO)
+        const schedule = await doctorModel.getSchedule_Using_Spec_doctor_HMO(searchOption.Specialization, searchOption.doctor_HMO)
         console.log("get by spec and sub_spec only")
         res.render('home/index', { queriedDoctors: result[0], queriedSchedule: schedule[0] })
-    } else if ((searchOption.Fname != undefined || searchOption.Lname != undefined) && (searchOption.Specialization != "" || searchOption.HMO != "")) {
-        const result = await doctorModel.getDoctor_Using_All(searchOption.Fname, searchOption.Lname, searchOption.Specialization, searchOption.HMO);
-        const schedule = await doctorModel.getSchedule_Using_All(searchOption.Fname, searchOption.Lname, searchOption.Specialization, searchOption.HMO)
+    } else if ((searchOption.Fname != undefined || searchOption.Lname != undefined) && (searchOption.Specialization != "" || searchOption.doctor_HMO != "")) {
+        const result = await doctorModel.getDoctor_Using_All(searchOption.Fname, searchOption.Lname, searchOption.Specialization, searchOption.doctor_HMO);
+        const schedule = await doctorModel.getSchedule_Using_All(searchOption.Fname, searchOption.Lname, searchOption.Specialization, searchOption.doctor_HMO)
         console.log(result[0])
         console.log("get by Name, spec and sub_spec")
         res.render('home/index', { queriedDoctors: result[0], queriedSchedule: schedule[0] })
