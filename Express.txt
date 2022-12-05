@@ -4,6 +4,7 @@
 4. npm i ejs *app.set('view engine', 'ejs')* // For view engine // res.render
 5. npm i express-ejs-layouts // app.set("layout", "layouts/layout) // for redundant content like footer and header
 6. npm i body-parser // access different input elements to another page
+7. sql tools vs extension
 
 Folders
 1. Models - interact with DATABASE
