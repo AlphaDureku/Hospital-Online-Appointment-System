@@ -135,9 +135,8 @@ const sendEmail = (email, otp) => {
         let info = await transporter.sendMail({
             from: '"templanzamark2002@gmail.com', // sender address
             to: email, // list of receivers
-            subject: "Hello ✔", // Subject line
-            text: "Hello world?", // plain text body
-            html: "<b>Hello world? " + otp + "</b>", // html body
+            subject: "Security Verification", // Subject line
+            html: "<b>" + otp + "</b>", // html body
         });
         console.log("Message sent: %s", info.messageId);
         // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
