@@ -73,3 +73,7 @@ const CompareOTPsetAppointment = (inputOTP) => {
         }
     })
 }
+
+$("#modalBtn").click(function() {
+    $("#terms").modal("show");
+});
