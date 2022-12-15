@@ -8,8 +8,8 @@ const app = express();
 const bodyParser = require("body-parser");
 const expressLayouts = require("express-ejs-layouts");
 const session = require('express-session')
-
-//Import routers
+const cors = require('cors')
+    //Import routers
 const indexRouter = require("./Routes/index");
 const doctorProfileRouter = require('./Routes/doctor-profile')
 const bookAppointmentRouter = require('./Routes/book-appointment')
@@ -19,6 +19,9 @@ app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 app.set("layout", "layouts/layout");
 
+app.use(cors({
+    origin: "*",
+}))
 app.use(session({
     secret: 'secret-key',
     resave: false,

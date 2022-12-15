@@ -1,6 +1,7 @@
 const doctorModel = require('../Models/Database_Queries/doctorQuery');
 
 exports.renderHomePage = async(req, res) => {
+    req.session.test = "Test"
     res.render('home/index')
 
 }

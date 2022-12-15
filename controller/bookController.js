@@ -48,6 +48,8 @@ exports.getPatientInfo = async(req, res) => {
     patientModel.dateOfBirth = req.body.dateOfBirth
     patientModel.gender = req.body.gender
     console.log(patientModel)
+
+    res.render('Services/choose-doctor', { layout: 'layouts/sub' })
 }
 
 exports.renderDoctorList = async(req, res) => {

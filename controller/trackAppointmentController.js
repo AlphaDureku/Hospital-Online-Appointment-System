@@ -13,7 +13,6 @@ exports.sendEmailOtp = async(req, res) => {
     const Patient = {
         Email: req.body.patient_Email
     }
-    console.log(Patient.email)
     const result = await patientModel.fetchPatient_Appointments_Using_Email(Patient.Email)
     if (result[0].length !== 0) {
         const hashed = await verificationModel.generateOTP(Patient.Email)
@@ -69,7 +68,7 @@ const sendEmail = (email, otp) => {
 
 
 exports.testInsertPatient = async(req, res) => {
-    patientModel.insertPatient("John", "Deep", "templanzamark2002@gmail.com", "9653876383", "111 Juan Luna St.", "20", "Male")
-    patientModel.insertPatient("Mark", "SuckerVerg", "templanzamark2003@gmail.com", "9653876383", "111 Juan Luna St.", "25", "Male")
+    patientModel.insertPatient("Kevin Carbera", "Deep", "templanzamark2002@gmail.com", "9653876383", "111 Juan Luna St.", "20", "Male")
+    patientModel.insertPatient("Joji", "SuckerVerg", "templanzamark2003@gmail.com", "9653876383", "111 Juan Luna St.", "25", "Male")
     res.send("success")
 }

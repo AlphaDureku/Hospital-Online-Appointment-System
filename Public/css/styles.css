@@ -5,6 +5,10 @@
     font-family: 'Montserrat', 'sans-serif';
 }
 
+body {
+    overflow-x: hidden;
+}
+
 .bg {
     background-image: url('/assets/Vector.png');
     background-size: cover;
@@ -242,24 +246,28 @@ a:hover {
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(auto-fit, minmax(1rem, 30rem));
-    padding: 20px;
-    background: rgba( 255, 255, 255, 0.25);
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37);
-    backdrop-filter: blur( 4px);
-    -webkit-backdrop-filter: blur( 4px);
-    border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18);
+    border-radius: 5px;
     text-align: center;
     width: 1700px;
-    height: 62vh;
+    height: 65vh;
     overflow: hidden;
     overflow-y: auto;
     color: rgba(75, 80, 109, 1);
 }
 
+.grid-container2 {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(1rem, 30rem));
+    border-radius: 5px;
+    text-align: center;
+    width: 1700px;
+    height: 65vh;
+    color: rgba(75, 80, 109, 1);
+}
+
 .doctor-flexbox-container {
     position: relative;
-    display: flex;
     flex-direction: row;
     border: 1px solid #24B7E9;
     border-radius: 8px;
@@ -267,7 +275,7 @@ a:hover {
     padding: 20px;
 }
 
-.doctor-flexbox-container:hover {
+.doctor-flexbox-view:hover {
     color: #388440;
     cursor: pointer;
 }
@@ -278,10 +286,20 @@ a:hover {
     text-align: start;
 }
 
+.doctor-flexbox-view {
+    margin-top: 10%;
+    text-align: center;
+    font-weight: bolder;
+}
+
 .doctor-flexbox-Info .Lname {
     font-weight: bold;
     font-size: 1.3rem;
     margin-bottom: 40px;
+}
+
+.doctor-flexbox-Info {
+    inline-size: max-content;
 }
 
 .doctor-flexbox-Info .specialization {
@@ -320,4 +338,96 @@ a:hover {
 
 #test {
     margin-left: -24.5%;
+}
+
+#picture {
+    margin-left: 90px;
+    padding-left: 45px;
+    padding-top: 80px;
+    width: 150px;
+    height: 180px;
+    background: url(icon.png);
+    background-size: 150px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+}
+
+.style1 {
+    padding-left: 10px;
+    margin-right: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    transform: rotate(-0.1deg);
+}
+
+#border0 {
+    font-weight: 700;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 20px;
+}
+
+#border1 {
+    background: #FFFFFF;
+    border: 1px solid #2F9D44;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    width: 160px;
+    height: 90px;
+    margin-left: 40px;
+    margin-bottom: 40px;
+    margin-right: 10px;
+    margin-top: 20px;
+    text-align: center;
+    padding-top: 15px;
+}
+
+#border2 {
+    background: #FFFFFF;
+    border: 1px solid #2F9D44;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    width: 160px;
+    height: 90px;
+    margin-top: 20px;
+    margin-right: 10px;
+    text-align: center;
+    padding-top: 15px;
+}
+
+#border3 {
+    background: #FFFFFF;
+    border: 1px solid #2F9D44;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    width: 160px;
+    height: 90px;
+    margin-top: 20px;
+    text-align: center;
+    padding-top: 15px;
+}
+
+#checkselect:checked {
+    background-color: #2F9D44;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.inner-flex {
+    display: flex;
+    flex-direction: column;
+    margin: 6px;
+}
+
+.card {
+    width: 600px;
+    height: 380px;
+    border-radius: 30px;
+}
+
+.pointer {
+    cursor: pointer;
 }
